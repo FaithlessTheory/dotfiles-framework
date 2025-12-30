@@ -29,8 +29,8 @@ Append the contents of `shell/aliases.sh` to your `~/.bashrc` and reload:
    ### 3. Passwordless Permissions (Sudoers)
 To allow the update alias and power script to run without a password, create a file at `/etc/sudoers.d/custom-rules` using `sudo EDITOR=nano visudo -f /etc/sudoers.d/custom-rules` and add the following:
 
-yourusername ALL=(ALL) NOPASSWD: /usr/bin/zypper dup --non-interactive,/usr/bin/zypper ref
-yourusername ALL=(ALL) NOPASSWD: /usr/local/bin/framework-power-toggle.sh
+```yourusername ALL=(ALL) NOPASSWD: /usr/bin/zypper dup --non-interactive,/usr/bin/zypper ref````
+yourusername ALL=(ALL) NOPASSWD: /usr/local/bin/framework-power-toggle.sh```
 
 ## Hardware Notes
 - **CPU**: Intel 12th Gen (i7-1260P / i5-1240P)
