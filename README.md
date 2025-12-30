@@ -13,3 +13,29 @@ This repository contains optimization scripts and configuration files to improve
 - `/scripts`: Hardware control scripts (Turbo Boost toggle).
 - `/shell`: Bash aliases and shell-specific customizations.
 - `/os`: Reference files for `sudoers.d` and `polkit` rules.
+
+## Installation
+
+### 1. Hardware Power Script
+1. Move `scripts/framework-power-toggle.sh` to `/usr/local/bin/`.
+2. Make it executable:
+   `sudo chmod +x /usr/local/bin/framework-power-toggle.sh`
+3. Add the script to **KDE System Settings > Power Management > Energy Saving** under the "Run Script" section for both AC and Battery profiles.
+
+### 2. Update Alias
+Append the contents of `shell/aliases.sh` to your `~/.bashrc` and reload:
+   `source ~/.bashrc`
+
+   ### 3. Passwordless Permissions (Sudoers)
+To allow the update alias and power script to run without a password, create a file at `/etc/sudoers.d/custom-rules` using `sudo EDITOR=nano visudo -f /etc/sudoers.d/custom-rules` and add the following:
+
+yourusername ALL=(ALL) NOPASSWD: /usr/bin/zypper dup --non-interactive, /usr/bin/zypper ref
+yourusername ALL=(ALL) NOPASSWD: /usr/local/bin/framework-power-toggle.sh
+
+## Hardware Notes
+- **CPU**: Intel 12th Gen (i7-1260P / i5-1240P)
+- **Wi-Fi**: Recommended hardware upgrade to **Intel BE200** for Wi-Fi 7 support.
+- **Battery**: Optimization focus is on disabling Turbo Boost to mitigate 12th Gen efficiency spikes.
+
+---
+*Maintained by your Framework 13 user profile.*
